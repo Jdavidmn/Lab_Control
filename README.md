@@ -10,7 +10,7 @@ El enlace al Overleaf de este laboratorio es:
 
 ## Modelo analítico
 
-* [Paper](https://www.overleaf.com/project/63f53ead14a901f64fddb97b)}
+* [Paper](https://www.overleaf.com/project/63f53ead14a901f64fddb97b)
 
 * [Presentación](https://www.youtube.com/watch?v=f_WuRfuMXQw&ab_channel=SheeshBruhSubscribeBro)
 
