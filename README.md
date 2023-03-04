@@ -1,8 +1,8 @@
 # Lab_Control
 
-## Motor CD
+Los enlaces al Overleaf de este laboratorio son:
 
-El enlace al Overleaf de este laboratorio es:
+## Motor CD
 
 * [Paper](https://www.overleaf.com/project/63fa67c7a0939d4bd2f15ee6)
 
