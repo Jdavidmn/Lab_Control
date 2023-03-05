@@ -17,7 +17,17 @@ yaw = tf([ry/jy*ky], [1 miuy*ry/jy 0]);
 
 figure("name", "pitch");
 step(pitch);
+ylabel('Ángulo (grados)');
 
 figure("name", "yaw");
 step(yaw);
+ylabel('Ángulo (grados)');
+
+figure("name", "pitch");
+impulse(pitch);
+ylabel('Ángulo (grados)');
+
+figure("name", "yaw");
+impulse(yaw);
+ylabel('Ángulo (grados)');
 
