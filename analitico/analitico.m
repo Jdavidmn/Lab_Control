@@ -31,3 +31,13 @@ figure("name", "yaw");
 impulse(yaw);
 ylabel('Ángulo (grados)');
 
+figure("name", "Lazo cerrado");
+subplot(1,2,1);
+step(feedback(pitch,1));
+title('pitch');
+ylabel('Ángulo (grados)');
+
+subplot(1,2,2);
+step(feedback(yaw,1));
+title('yaw');
+ylabel('Ángulo (grados)');
