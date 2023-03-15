@@ -12,5 +12,5 @@ Los enlaces al Overleaf de este laboratorio son:
 
 * [Paper](https://www.overleaf.com/project/63f53ead14a901f64fddb97b)
 
-* [Presentación](https://www.youtube.com/watch?v=f_WuRfuMXQw&ab_channel=SheeshBruhSubscribeBro)
+* [Presentación](https://www.overleaf.com/2848535845wsfdbsvnfxyd)
 
