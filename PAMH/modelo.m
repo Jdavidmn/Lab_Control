@@ -50,11 +50,19 @@ w = 2*pi/te;
 wn = w/sqrt(1-shi^2);
 
 A = 1.7;
+lim_datos = 0.574;
 
+% Se determina el valor de la ganancia
 K = gmax_i/A;
+K = lim_datos/A;
+
+figure();
+grid on;
+plot(t_c,theta_c);
 
 % Función obtenida matematicamente
 Gs = K*wn^2/(s^2+2*shi*wn*s+wn^2);
+
 figure();
 step(Gs);
 hold on
@@ -65,4 +73,5 @@ xlabel('Time');
 ylabel('Ángulo (rad)');
 xlim([0, 40])
 ylim([0, 1.4])
+legend('Matemática', 'Modelo', 'Datos');
 grid on;
