@@ -23,6 +23,11 @@ w = 2*pi/(T*sqrt(1-xi^2));
 
 model = k*w^2/(s^2+2*xi*w*s+w^2);           % la que da el modelo a pata
 
+% step(feedback(C*tf3,1));
+
+% El control C hay que importarlo del archivo .mat (sisotool)
+
+%------------------------------------------------------------------------
 
 Ac = [0, 1; -tf3.denominator{1}(3), -tf3.denominator{1}(2)];
 
@@ -77,6 +82,6 @@ Kp = Kss(1);
 %KP=(num(2)-KI)/N;
 %KD=(num(1)-KP)/N;
 
-% step(feedback(C*tf3,1));
+
 
 %K = acker(Aa, Bb, [(-2 +1*i), (-2 -1*i)]);
