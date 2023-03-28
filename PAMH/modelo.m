@@ -54,7 +54,7 @@ Ks = acker(As, Bs, Ps);
 
 % metodo de lqr
 
-Q = [1 0 0; 0 1 0; 0 0 40];
+Q = [0.005 0 0; 0 5 0; 0 0 10];
 
 R = 1;
 
@@ -67,6 +67,8 @@ polos = eig(As - Bs*Kss);
 Ki = -Kss(3);
 Kd = Kss(2);
 Kp = Kss(1);
+
+tf1 = tf([1 0],[0.5 1]);
 
 % [Ac, Bc, Cc, Dc] = canon(A, B);
 
