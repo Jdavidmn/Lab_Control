@@ -47,7 +47,7 @@ Ms = [Bs As*Bs As^2*Bs];        % matriz de controlabilidad
 
 rank(Ms);       % si da 3 es controlable
 
-Ps = [-2+1.5i -2+1.5i -3];
+Ps = [-2+1.5i -2-1.5i -3];
 
 Ks = acker(As, Bs, Ps);
 
@@ -82,6 +82,3 @@ Kp = Kss(1);
 %KP=(num(2)-KI)/N;
 %KD=(num(1)-KP)/N;
 
-
-
-%K = acker(Aa, Bb, [(-2 +1*i), (-2 -1*i)]);
