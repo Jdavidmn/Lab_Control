@@ -68,11 +68,7 @@ Ki = -Kss(3);
 Kd = Kss(2);
 Kp = Kss(1);
 
-<<<<<<< Updated upstream
 tf1 = tf([1 0],[0.5 1]);
-=======
-tf1 = tf([1 0], [0.5 1]);
->>>>>>> Stashed changes
 
 % [Ac, Bc, Cc, Dc] = canon(A, B);
 
