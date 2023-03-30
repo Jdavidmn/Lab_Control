@@ -42,46 +42,5 @@ KD=(num(1)-KP)/N;
 figure();
 step(feedback(tf_ctrl_imc*tf3,1));
 
-%-------------------------------------------------------
-%     DISEÑO DEL I_PD - ACKER (UBICACIÓN DE POLOS)     -
-%-------------------------------------------------------
-
-% Determina matriz de espacio de estados
-[A,B,C,D] = tf2ss(num_tf3,den_tf3);
-
-% Calcula la controlabilidad
-Co = ctrb(A,B);
-Co_inv = inv(Co);
-
-A_bar = Co_inv*A*Co;
-B_bar = Co_inv*B;
-C_bar = C*Co;
-D_bar = D;
-
-% Polos deseados 
-P_wish = [-1+3i -1-3i];
-K = acker(A_bar,B_bar,P_wish);
-
-K1 = K(1);
-K2 = K(2);
-
-%Simulacion en Simulink
-warning off
-%sim('Problm_1_simulink')
-
-%Importar variables del simulink
-t1      = out1.time;
-out11   = out1.signals.values(:,1);
-step11  = step1.signals.values(:,1);
-t2      = step1.time;
-
-%Graficar la respuesta
-%figure();
-%plot(t1, out11, t2, step11, 'Linewidth', 2)
-%ylabel("Amplitud")
-%grid on
-%legend("Compesado", "Entrada", 'Location', 'SouthEast')
-%title("Respuesta a un impulso, del REI")
-
 
  
