@@ -62,7 +62,7 @@ Ks = acker(As, Bs, Ps);
 % Opciones de Q
 %Q = [0.5 0 0; 0 10 0; 0 0 20];     % opcion 2
 %Q = [1 0 0; 0 10 0; 0 0 10];      % opcion 3
-Q = [0.005 0 0; 0 5 0;  0 0 10];  % opcion 4
+Q = [0.5 0 0; 0 6 0;  0 0 7];  % opcion 4
 
 R = 1;
 
@@ -108,8 +108,12 @@ polos = eig(As - Bs*Kss);
 Ki = -Kss(3)
 Kd = Kss(2)
 Kp = Kss(1)
+% Ki = 3.1820;
+% Kd = 3.2712;
+% Kp = 2.6412;
+N = 4
 
-tf1 = tf([1 0],[0.5 1]);
+tf1 = tf([N 0],[1 N]);
 
 % [Ac, Bc, Cc, Dc] = canon(A, B);
 
