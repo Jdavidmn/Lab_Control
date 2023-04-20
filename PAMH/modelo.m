@@ -62,9 +62,9 @@ Ks = acker(As, Bs, Ps);
 % Opciones de Q
 %Q = [0.5 0 0; 0 10 0; 0 0 20];     % opcion 2
 %Q = [1 0 0; 0 10 0; 0 0 10];      % opcion 3
-Q = [0.5 0 0; 0 6 0;  0 0 7];  % opcion 4
+Q = [0.5 0 0; 0 6 0;  0 0 9];  % opcion 4       Esta opcion se uso
 
-R = 1;
+R = 2.2;
 
 Kss = lqr(As, Bs, Q, R);
 
@@ -111,7 +111,7 @@ Kp = Kss(1)
 % Ki = 3.1820;
 % Kd = 3.2712;
 % Kp = 2.6412;
-N = 4
+N = 20
 
 tf1 = tf([N 0],[1 N]);
 
