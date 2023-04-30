@@ -27,7 +27,7 @@ plot(tiempo, entrada)
 % systemIdentification()
 
 % funcion de posicion
-tf_22 = tf(0.024254/(s*(1 + 0.10333*s)));
+tf_22 = tf([0.23472], [1 9.678 0]);
 
 % funcion de angulo
 tf_300 = tf([-0.3573 -0.4939], [1 0.0154 35.32]);
@@ -35,4 +35,14 @@ tf_300 = tf([-0.3573 -0.4939], [1 0.0154 35.32]);
 % calculos de las matrices posicion
 
 [num_p, den_p] = tfdata(tf_22, 'v');
-Ap = [0 0 1 0; 0 0 0 0; 0 0 den_p(2) 0; 0 0 0 0];
+[num_a, den_a] = tfdata(tf300, 'v');
+
+k_techo = 0.97;
+
+A = [0 0 1 0; 0 0 0 1; 0 0 -den_p(2) 0; 0 -den_a(3) 0 -den_a(2)];
+B = [0; num_a(2); num_p(3); k_techo*num_a(2)*(num_a(3)/num_a(2))];
+C = [1 0 0 0; 0 1 0 0];
+
+sys = ss(A, B, C, [0; 0]);
+
+funciones = tf(sys);
