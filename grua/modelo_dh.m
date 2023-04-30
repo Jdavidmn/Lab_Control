@@ -90,7 +90,7 @@ zeta = den_d(2)/(2*wn);
 
 ka = num_d(2);
 
-za = -num_d(3)/ka;
+za = num_d(3)/ka;
 
 kt = 0.9756;
 
@@ -114,7 +114,7 @@ A_deg_s = [0      1;
 B_deg_s = [0;
            1];
        
-C_deg_s = [-ka*za ka];       
+C_deg_s = [ka*za ka];       
 
 % Se valida la funcion obtenida desde el modelo
 [num_dv, den_dv] = ss2tf(A_deg_s, B_deg_s, C_deg_s, D);
@@ -135,4 +135,9 @@ C_sys = [1 0 0 0;
          0 1 0 0];
      
 D = 0;
+
+% Funciones del sistema
+sys = ss(A_sys, B_sys, C_sys, [0; 0]);
+
+funciones = tf(sys);
 
