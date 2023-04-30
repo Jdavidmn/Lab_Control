@@ -58,12 +58,16 @@ tf_posicion304 = tf([0.23472], [1 9.678 0]);
  %Se sacan las matrices de estado para el ángulo
  g_ktecho = 0.9756;
  Aa=[0 0 0 0;0 0 0 1; 0 0 0 0; 0 -dena(3) 0 -dena(2)];
- Bp=[0;numa(2);0; -g_ktecho*numa(3)];
+ Bp=[0;numa(2);0; g_ktecho*numa(3)];
  Cp=[0 1 0 0];
  
  
  %Modelo SIMO completo, uniendo posicion y ángulo
- At=[0 0 1 0;0 0 0 1;0 0 denp(2) 0; 0 -dena(3) 0 -dena(2)];
- Bt=[0;numa(2);nump(3);-g_ktecho*numa(3)];
- Ct=[1 0 0 0];
+ At=[0 0 1 0;0 0 0 1;0 0 -denp(2) 0; 0 -dena(3) 0 -dena(2)];
+ Bt=[0;numa(2);nump(3);g_ktecho*numa(3)];
+ Ct=[1 0 0 0;0 1 0 0];
  
+%Verificaciones
+sys = ss(At, Bt, Ct, [0; 0]);
+funciones = tf(sys);
+%%%%
