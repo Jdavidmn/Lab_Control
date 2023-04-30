@@ -27,7 +27,12 @@ plot(tiempo, entrada)
 % systemIdentification()
 
 % funcion de posicion
-tf_22 = 0.024036*tf((1 - 0.08514*s)/(s*(1 + 0.025559*s)));
+tf_22 = tf(0.024254/(s*(1 + 0.10333*s)));
 
+% funcion de angulo
 tf_300 = tf([-0.3573 -0.4939], [1 0.0154 35.32]);
 
+% calculos de las matrices posicion
+
+[num_p, den_p] = tfdata(tf_22, 'v');
+Ap = [0 0 1 0; 0 0 0 0; 0 0 den_p(2) 0; 0 0 0 0];
