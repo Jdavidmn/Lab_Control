@@ -35,7 +35,7 @@ tf_300 = tf([-0.3573 -0.4939], [1 0.0154 35.32]);
 % calculos de las matrices posicion
 
 [num_p, den_p] = tfdata(tf_22, 'v');
-[num_a, den_a] = tfdata(tf300, 'v');
+[num_a, den_a] = tfdata(tf_300, 'v');
 
 k_techo = 0.97;
 
@@ -46,3 +46,11 @@ C = [1 0 0 0; 0 1 0 0];
 sys = ss(A, B, C, [0; 0]);
 
 funciones = tf(sys);
+
+ %                       0.23472
+ % Posicion(s)=  -------------------------
+ %                     s^2 + 9.678 s
+
+ %               -0.3469 s - 0.3444
+ % Angulo(s)=  -----------------------
+ %             s^2 + 0.01053 s + 35.33
