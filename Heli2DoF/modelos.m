@@ -34,6 +34,28 @@ p_p3 = data_p3(22:624,3);
 y_p3 = data_p1(22:624,2);
 ep_p3 = data_p3(22:624,5);
 
+
+% DATOS DE PITCH CORTADOS APROXIMADAMENTE EN 10
+
+% FILE 1
+t_p1c = data_p1(22:472,1);
+p_p1c = data_p1(22:472,3);
+y_p1c = data_p1(22:472,2);
+ep_p1c = data_p1(22:472,5);
+
+% FILE 3
+t_p2c = data_p2(22:472,1);
+p_p2c = data_p2(22:472,3);
+y_p2c = data_p2(22:472,2);
+ep_p2c = data_p2(22:472,5);
+
+% FILE 5
+t_p3c = data_p3(22:472,1);
+p_p3c = data_p3(22:472,3);
+y_p3c = data_p1(22:472,2);
+ep_p3c = data_p3(22:472,5);
+
+
 % DATOS DE YAW
 
 % FILE 2
@@ -53,7 +75,8 @@ ey_y3 = data_y3(22:end,4);
 
 % MODELO PITCH/PITCH
 
-tf_pitch = tf([0.55639 0.55639*0.06272],[1 0.7413 1.052]);
+%tf_pitch = tf([0.55639 0.55639*0.06272],[1 0.7413 1.052]);
+tf_pitch = tf([0.036997 0.036997*1.138],[1 0.6029 1.093]);
 [num_pitch, den_pitch] = tfdata(tf_pitch,'v');
 
 Apitch_p = [0 1; den_pitch(3) -den_pitch(2)];
@@ -88,7 +111,7 @@ tf(ss(Ayaw_p,Byaw_p,Cyaw_p,0));
 
 % MODELO YAW/PITCH
 
-tf_combi = tf([0.0365], [1 0]);
+tf_combi = tf([0.01311], [1 0]);
 [num_combi, den_combi] = tfdata(tf_combi, 'v');
 
 Ayaw_pitch = [0 0 0 0; 0 0 0 1; 0 0 0 0; 0 0 0 0];
@@ -106,5 +129,31 @@ C_mimo = [1 0 0 0; 0 1 0 0];
 
 %Se verifican las tf a partir del MIMO
 tf(ss(A_mimo, B_mimo, C_mimo, 0))
+
+
+%Se extienden las matrices
+As = [A_mimo, zeros(4,2); -C_mimo, zeros(2,2)];
+Bs = [B_mimo; zeros(2,2)];
+
+%%% Por Ackermann (Ubicación de Polos)
+Ps =  [-0.8+0.16i -0.8-0.16i -0.7 -0.9 -1.4 -1.65]; % Ubicacion de los polos
+
+Ks = place(As, Bs, Ps);
+Ki = -Ks(:, 5:6);
+K = Ks(:, 1:4);
+
+%%% Por LQR
+Q = [200 0 0 0 0 0; 0 20 0 0 0 0; 0 0 0.1 0 0 0; 0 0 0 5 0 0; 0 0 0 0 100 0; 0 0 0 0 0 80];
+R = 0.1;
+Kss = lqr(As, Bs, Q, R);
+Ki_lqr = -Kss(:, 5:6);
+K_lqr = Kss(:, 1:4);
+
+%LQR DEFINITIVO
+%Q = [200 0 0 0 0 0; 0 20 0 0 0 0; 0 0 0.1 0 0 0; 0 0 0 5 0 0; 0 0 0 0 100 0; 0 0 0 0 0 80];
+%R = 0.1;
+
+
+
 
 
